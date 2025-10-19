@@ -12,7 +12,7 @@
 
 class GameManager {
 public:
-    GameManager(sf::RenderWindow* window);
+    GameManager(sf::RenderWindow* window, bool cont);
     void initialize();
     void update(float dt);
     void loseLife();
@@ -49,4 +49,7 @@ private:
 
     static constexpr float PAUSE_TIME_BUFFER = 0.5f;
     static constexpr float POWERUP_FREQUENCY = 7.5f;    // time between minimum powerup spawn
+
+
+    bool controls;
 };
