@@ -52,4 +52,6 @@ private:
 
 
     bool controls;
+
+    int powerUpChance = 700;
 };
