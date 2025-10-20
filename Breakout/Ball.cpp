@@ -114,3 +114,9 @@ void Ball::setFireBall(float duration)
     _isFireBall = false;
     _timeWithPowerupEffect = 0.f;    
 }
+
+
+void Ball::shake(int dist)
+{
+    _sprite.setPosition(_sprite.getPosition().x + dist, _sprite.getPosition().y + dist);
+}

@@ -74,7 +74,7 @@ void GameManager::update(float dt)
     _time += dt;
 
 
-    if (_time > _timeLastPowerupSpawned + POWERUP_FREQUENCY && rand()%powerUpChance == 0)      // TODO parameterise
+    if (_time > _timeLastPowerupSpawned + POWERUP_FREQUENCY && rand()%powerUpChance == 0)      // TODO parameterise [DONE]
     {
         _powerupManager->spawnPowerup();
         _timeLastPowerupSpawned = _time;
@@ -89,13 +89,48 @@ void GameManager::update(float dt)
     else
     {
         _paddle->followMouse();
-    }
-    
+    }    
 
     // update everything 
     _paddle->update(dt);
     _ball->update(dt);
     _powerupManager->update(dt);
+
+    if (shake)
+    {
+        shakeTime += dt;
+        //stop shake after given time
+        if (shakeTime > shakeEndTime)
+        {
+            //unshake last
+            _paddle->shake(-randShake);
+            _ball->shake(-randShake);
+            _brickManager->shake(-randShake);
+
+            //reset variables
+            shake = false;
+            randShake = 0;
+            shakeTime = 0;
+            lastShake = 0;
+        }
+
+        //shake based on 
+        if (shake && shakeTime > shakeIntervals + lastShake)
+        {
+            //unshake last
+            _paddle->shake(-randShake);
+            _ball->shake(-randShake);
+            _brickManager->shake(-randShake);
+
+            //shake
+            lastShake = shakeTime;
+            randShake = (rand() % shakeIntensity) - (shakeIntensity / 2);
+            _paddle->shake(randShake);
+            _ball->shake(randShake);
+            _brickManager->shake(randShake);
+        }
+    }
+    
 }
 
 void GameManager::loseLife()
@@ -103,11 +138,12 @@ void GameManager::loseLife()
     _lives--;
     _ui->lifeLost(_lives);
 
-    // TODO screen shake.
+    // TODO screen shake. [DONE]
+    shake = true;
 }
 
 void GameManager::render()
-{
+{    
     _paddle->render();
     _ball->render();
     _brickManager->render();

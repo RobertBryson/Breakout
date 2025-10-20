@@ -12,6 +12,8 @@ public:
     void render();
     int checkCollision(sf::CircleShape& ball, sf::Vector2f& direction);
 
+    void shake(int dist);
+
 private:
     std::vector<Brick> _bricks;
     sf::RenderWindow* _window;

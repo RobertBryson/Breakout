@@ -71,3 +71,8 @@ void Paddle::followMouse() //postion is adjusted, will need changed if different
 {
     _sprite.setPosition(sf::Mouse::getPosition().x - 550, _sprite.getPosition().y);
 }
+
+void Paddle::shake(int dist)
+{
+    _sprite.setPosition(_sprite.getPosition().x + dist, _sprite.getPosition().y + dist);
+}

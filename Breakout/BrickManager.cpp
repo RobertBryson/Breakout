@@ -58,3 +58,10 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
     }
     return collisionResponse;
 }
+
+void BrickManager::shake(int dist)
+{
+    for (auto& brick : _bricks) {
+        brick.shake(dist);
+    }
+}

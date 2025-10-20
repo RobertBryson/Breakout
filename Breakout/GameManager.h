@@ -54,4 +54,12 @@ private:
     bool controls;
 
     int powerUpChance = 700;
+
+    bool shake = false;
+    int randShake = 0;
+    int shakeIntensity = 50;
+    float shakeTime = 0;
+    float shakeEndTime = 0.2;
+    float shakeIntervals = 0.03;
+    float lastShake = 0;
 };

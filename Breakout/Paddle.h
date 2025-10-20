@@ -17,6 +17,7 @@ public:
     void setWidth(float coeff, float duration);
 
     void followMouse();
+    void shake(int dist);
 
 private:
 

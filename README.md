@@ -41,9 +41,9 @@ Fixed compiler error - Circular dependency caused by include "PowerupFireBall.h"
 
 Added mouse controls - New function "followMouse()" in Paddle. Player is given choice, which is stored as bool and passed to game manager, in update calls appropriate control scheme - \*20 minutes
 
+Parameterised powerUpChance - added variable used for rand() that decides when power up spawns - \*2 minutes
 
-
-
+Screen Shake - On lost life sets shake bool to true, this is checked in update along with other parameters such as intervals, and length, to shake the components of the scene - \*25 minutes
 
 
 

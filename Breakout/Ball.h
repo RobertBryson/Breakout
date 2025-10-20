@@ -15,6 +15,8 @@ public:
     void setVelocity(float coeff, float duration);
     void setFireBall(float duration);
 
+    void shake(int dist);
+
 private:
     sf::CircleShape _sprite;
     sf::Vector2f _direction;
