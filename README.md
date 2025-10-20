@@ -45,11 +45,7 @@ Parameterised powerUpChance - added variable used for rand() that decides when p
 
 Screen Shake - On lost life sets shake bool to true, this is checked in update along with other parameters such as intervals, and length, to shake the components of the scene - \*25 minutes
 
-
-
-
-
-
+Power up fix - Not entirely sure what was expected but have converted the case 5 to default, as rand()%5 can only be 0 - 4, this also protects against any issues with corruption - \*2 minutes
 
 
 
