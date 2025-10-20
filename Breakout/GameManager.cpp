@@ -23,7 +23,7 @@ void GameManager::initialize()
     _paddle = new Paddle(_window);
     _brickManager = new BrickManager(_window, this);
     _messagingSystem = new MessagingSystem(_window);
-    _ball = new Ball(_window, 400.0f, this); 
+    _ball = new Ball(_window, 400.0f, this, true); 
     _powerupManager = new PowerupManager(_window, _paddle, _ball);
     _ui = new UI(_window, _lives, this);
 
@@ -94,6 +94,7 @@ void GameManager::update(float dt)
     // update everything 
     _paddle->update(dt);
     _ball->update(dt);
+    for (auto* temp : _secondaryBalls) { temp->update(dt); }
     _powerupManager->update(dt);
 
     if (shake)
@@ -105,6 +106,7 @@ void GameManager::update(float dt)
             //unshake last
             _paddle->shake(-randShake);
             _ball->shake(-randShake);
+            for (auto* temp : _secondaryBalls) { temp->shake(-randShake); }
             _brickManager->shake(-randShake);
 
             //reset variables
@@ -120,6 +122,7 @@ void GameManager::update(float dt)
             //unshake last
             _paddle->shake(-randShake);
             _ball->shake(-randShake);
+            for (auto* temp : _secondaryBalls) { temp->shake(-randShake); }
             _brickManager->shake(-randShake);
 
             //shake
@@ -127,6 +130,7 @@ void GameManager::update(float dt)
             randShake = (rand() % shakeIntensity) - (shakeIntensity / 2);
             _paddle->shake(randShake);
             _ball->shake(randShake);
+            for (auto* temp : _secondaryBalls) { temp->shake(-randShake); }
             _brickManager->shake(randShake);
         }
     }
@@ -146,6 +150,7 @@ void GameManager::render()
 {    
     _paddle->render();
     _ball->render();
+    for (auto* temp : _secondaryBalls) { temp->render(); }
     _brickManager->render();
     _powerupManager->render();
     _window->draw(_masterText);
@@ -162,3 +167,20 @@ UI* GameManager::getUI() const { return _ui; }
 Paddle* GameManager::getPaddle() const { return _paddle; }
 BrickManager* GameManager::getBrickManager() const { return _brickManager; }
 PowerupManager* GameManager::getPowerupManager() const { return _powerupManager; }
+
+
+void GameManager::createSecondaryBall()
+{
+    _secondaryBalls.emplace_back(new Ball(_window, 400.0f, this, false));
+}
+
+void GameManager::deleteSecondaryBall(Ball* ball)
+{
+    for (int i = 0; i < _secondaryBalls.size(); i++)
+    {
+        if (_secondaryBalls.at(i) == ball)
+        {
+            _secondaryBalls.erase(_secondaryBalls.begin() + i);
+        }
+    }
+}

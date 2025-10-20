@@ -8,7 +8,7 @@ class GameManager;  // forward declaration
 
 class Ball {
 public:
-    Ball(sf::RenderWindow* window, float velocity, GameManager* gameManager);
+    Ball(sf::RenderWindow* window, float velocity, GameManager* gameManager, bool prime);
     ~Ball();
     void update(float dt);
     void render();
@@ -16,6 +16,7 @@ public:
     void setFireBall(float duration);
 
     void shake(int dist);
+    void newBall();
 
 private:
     sf::CircleShape _sprite;
@@ -31,5 +32,7 @@ private:
 
     static constexpr float RADIUS = 10.0f;      
     static constexpr float VELOCITY = 350.0f;   // for reference.
+
+    bool primary; //tracks if this is the main ball
 };
 

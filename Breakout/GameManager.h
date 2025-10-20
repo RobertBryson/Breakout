@@ -2,10 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include "CONSTANTS.h"
 #include "Paddle.h"
-#include "Ball.h"
+//#include "Ball.h"
 #include "BrickManager.h"
-#include "PowerupManager.h"
+//#include "PowerupManager.h"
 #include "MessagingSystem.h"
+#include <algorithm>
 #include "UI.h"
 
 
@@ -26,6 +27,8 @@ public:
     sf::RenderWindow* getWindow() const;
     UI* getUI() const;
 
+    void createSecondaryBall();
+    void deleteSecondaryBall(Ball* ball);
 
 private:
     bool _pause;
@@ -42,13 +45,14 @@ private:
     sf::RenderWindow* _window;
     Paddle* _paddle;
     Ball* _ball;
+    std::vector<Ball*> _secondaryBalls;
     BrickManager* _brickManager;
     PowerupManager* _powerupManager;
     MessagingSystem* _messagingSystem;
     UI* _ui;
 
     static constexpr float PAUSE_TIME_BUFFER = 0.5f;
-    static constexpr float POWERUP_FREQUENCY = 7.5f;    // time between minimum powerup spawn
+    static constexpr float POWERUP_FREQUENCY = 3.5f;    // time between minimum powerup spawn
 
 
     bool controls;

@@ -7,7 +7,7 @@ int main()
     //set inpput type
     bool controls;
     while (true) {
-        std::cout << "\nAre we playing or observing? Enter 0 for Keyboard, or 1 for Mouse:";
+        std::cout << "\nAre we playing keyboard or mouse? Enter 0 for Keyboard, or 1 for Mouse:";
         std::string input_line;
         std::cin >> input_line;
 
