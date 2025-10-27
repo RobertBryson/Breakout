@@ -8,6 +8,7 @@ public:
     sf::FloatRect getBounds() const;
 
     void shake(int dist);
+    const sf::Vector2f getPos();
 
 private:
     sf::RectangleShape _shape;

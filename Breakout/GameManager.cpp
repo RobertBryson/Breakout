@@ -74,12 +74,6 @@ void GameManager::update(float dt)
     _time += dt;
 
 
-    if (_time > _timeLastPowerupSpawned + POWERUP_FREQUENCY && rand()%powerUpChance == 0)      // TODO parameterise [DONE]
-    {
-        _powerupManager->spawnPowerup();
-        _timeLastPowerupSpawned = _time;
-    }
-
     // move paddle
     if (controls == true)
     {

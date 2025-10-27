@@ -18,6 +18,8 @@ private:
     std::vector<Brick> _bricks;
     sf::RenderWindow* _window;
 
+    int powerUpChance = 5;
+
     GameManager* _gameManager;
     static constexpr float TOP_PADDING = 100.0f;
 };

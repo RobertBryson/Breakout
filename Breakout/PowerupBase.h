@@ -10,7 +10,7 @@
 class PowerupBase
 {
 public:
-    PowerupBase(sf::RenderWindow* window, Paddle* paddle, Ball* ball);
+    PowerupBase(sf::RenderWindow* window, Paddle* paddle, Ball* ball, sf::Vector2f pos);
     virtual ~PowerupBase();
 
     void update(float dt);

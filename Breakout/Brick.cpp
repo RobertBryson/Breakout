@@ -24,3 +24,8 @@ void Brick::shake(int dist)
 {
     _shape.setPosition(_shape.getPosition().x + dist, _shape.getPosition().y + dist);
 }
+
+const sf::Vector2f Brick::getPos()
+{
+    return _shape.getPosition();
+}
